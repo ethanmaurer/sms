@@ -4,7 +4,7 @@ const { MessagingResponse } = require("twilio").twiml;
 
 const app = express();
 
-app.post("/sms", (req, res) => {
+app.post("/", (req, res) => {
   const twiml = new MessagingResponse();
 
   console.log(req.body);
