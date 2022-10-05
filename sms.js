@@ -11,4 +11,7 @@ client.messages
     from: "+13024053598",
     to: "+16086321672",
   })
-  .then((message) => console.log(message.sid));
+  .then((message) => console.log(message.sid))
+  .catch((error) => {
+    console.log(error);
+  });
