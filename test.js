@@ -6,8 +6,8 @@ const { MessagingResponse } = require("twilio").twiml;
 
 const app = express();
 
-const fs = require("fs");
-const files = fs.readdirSync("./images");
+// const fs = require("fs");
+// const files = fs.readdirSync("./images");
 /* now files is an Array of the name of the files in the folder and you can pick a random name inside of that array */
 
 app.use(
@@ -22,9 +22,8 @@ app.post("/sms", (req, res) => {
   console.log("Checking for incoming message: " + incoming);
 
   if (incoming.includes("picture")) {
-    let chosenFile = files[Math.floor(Math.random() * files.length)];
-    sendSMS(res, twiml, "Picture time!", chosenFile);
-    currentImage++;
+    //let chosenFile = files[Math.floor(Math.random() * files.length)];
+    sendSMS(res, twiml, "Picture time!", NULL);
   } else if (incoming === "begin") {
     sendSMS(
       res,
@@ -144,8 +143,8 @@ app.post("/sms", (req, res) => {
   res.end(twiml.toString());
 });
 
-http.createServer(app).listen(process.env.PORT || 5000, () => {
-  console.log("listening on port: ", process.env.PORT || 5000);
+http.createServer(app).listen(process.env.PORT || 1338, () => {
+  console.log("listening on port: ", process.env.PORT || 1338);
 });
 
 function sendSMS(res, twiml, messageToSend, image) {
