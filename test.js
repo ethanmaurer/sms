@@ -26,7 +26,7 @@ app.post("/sms", (req, res) => {
   console.log("Checking for incoming message: " + incoming);
 
   if (incoming.includes("picture")) {
-    twiml.media(images[currentImage]);
+    sendSMS(res, twiml, "Picture time!", images[currentImage]);
     currentImage++;
   } else if (incoming === "begin") {
     sendSMS(
