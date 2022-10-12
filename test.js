@@ -12,6 +12,8 @@ const images = [
   "https://i.imgur.com/3Z3Z3Z3.jpg",
 ];
 
+let currentImage = 0;
+
 app.use(
   express.urlencoded({
     extended: true,
@@ -23,7 +25,10 @@ app.post("/sms", (req, res) => {
   const incoming = req.body.Body.toLowerCase();
   console.log("Checking for incoming message: " + incoming);
 
-  if (incoming === "begin") {
+  if (incoming.includes("picture")) {
+    twiml.media(images[currentImage]);
+    currentImage++;
+  } else if (incoming === "begin") {
     sendSMS(
       res,
       twiml,
