@@ -1,5 +1,5 @@
 const http = require("http");
-const port = 1338;
+const port = 3000;
 const express = require("express");
 const { send } = require("process");
 const { MessagingResponse } = require("twilio").twiml;
@@ -21,6 +21,7 @@ app.use(
 app.post("/sms", (req, res) => {
   const twiml = new MessagingResponse();
   const incoming = req.body.Body.toLowerCase();
+  console.log("Checking for incoming message: " + incoming);
 
   if (incoming === "begin") {
     sendSMS(
@@ -141,8 +142,8 @@ app.post("/sms", (req, res) => {
   res.end(twiml.toString());
 });
 
-http.createServer(app).listen(1338, () => {
-  console.log("listening on port 1338");
+http.createServer(app).listen(3000, () => {
+  console.log("listening on port 3000");
 });
 
 function sendSMS(res, twiml, messageToSend, image) {

@@ -4,6 +4,6 @@
     "twilio": "^3.82.2"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node test.js"
   }
 }
