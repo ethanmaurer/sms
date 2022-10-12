@@ -142,8 +142,8 @@ app.post("/sms", (req, res) => {
   res.end(twiml.toString());
 });
 
-http.createServer(app).listen(1338, () => {
-  console.log("listening on port 1338");
+http.createServer(app).listen(process.env.PORT || 5000, () => {
+  console.log("listening on port: ", process.env.PORT || 5000);
 });
 
 function sendSMS(res, twiml, messageToSend, image) {
